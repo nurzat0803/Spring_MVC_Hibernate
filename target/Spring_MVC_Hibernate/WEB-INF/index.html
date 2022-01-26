@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://java.sun.com/jsf/composite">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+<h5 style="margin-top: 50px; margin-left: 200px">Hello!</h5>
+<div style="width: 1000px" class="container my-7">
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${person}" class="container my-2">
+                <p class="my-5">
+                    <a href="/person-add" class="btn btn-primary"><i
+                            class="fas fa-user-plus ml-2"> Add Student</i>
+                    </a>
+                </p>
+                <div class="col-md-8">
+                    <h2 th:case="null">No Students yet!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="person : ${listPersons}">
+                                    <td th:text="${person.name}">Person ID</td>
+                                    <td th:text="${person.country}">Person country</td>
+                                    <td>
+                                        <a th:href="/@{'/edit/' + ${person.id}}">Edit edit</a></td>
+                                    <td>
+                                        <a th:href="/@{'/delete/' + ${person.id}}">Edit edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--<td><a th:href="@{/persons/edit/{id}(id=${person.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>-->
+<!--<td><a th:href="@{/persons/delete/{id}(id=${person.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>-->
+<!--</tr>-->
+
+
+
+<!--<div class="container my-2">-->
+<!--    <div class="card">-->
+<!--        <div class="card-body">-->
+<!--            <div th:switch="${persons}" class="container my-5">-->
+<!--                <p class="my-5">-->
+<!--                    <a href="/sign-up" class="btn btn-primary"><i-->
+<!--                            class="fas fa-user-plus ml-2"> Add Person</i></a>-->
+<!--                </p>-->
+<!--                <div class="col-md-10">-->
+<!--                    <h2 th:case="null">No Person yet!</h2>-->
+<!--                    <div th:case="*">-->
+<!--                        <table class="table table-striped table-responsive-md">-->
+<!--                            <thead>-->
+<!--                            <tr>-->
+<!--                                <th>Name</th>-->
+<!--                                <th>Age</th>-->
+<!--                                <th>Email</th>-->
+<!--                                <th>Edit</th>-->
+<!--                                <th>Delete</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                            <tr th:each="person : ${persons}">-->
+<!--                                <td th:text="${person.name}"></td>-->
+<!--                                <td th:text="${person.age}"></td>-->
+<!--                                <td th:text="${person.email}"></td>-->
+<!--                                <td><a th:href="@{/persons/edit/{id}(id=${person.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>-->
+<!--                                <td><a th:href="@{/persons/delete/{id}(id=${person.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+</html>
